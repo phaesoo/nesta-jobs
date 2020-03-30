@@ -22,6 +22,8 @@ def main(configs):
 
     table_rows = parsed.body.find("table", id="constituents").find_all("tr")
 
+    print (f"Total rows: {len(table_rows)}")
+
     table_headers = table_rows[0].find_all("th")
     table_headers = [s.text.rstrip("\n").strip().lower() for s in table_headers]
 
@@ -31,7 +33,7 @@ def main(configs):
     ci_list = list()
     for target in column_names:
         if target not in table_headers:
-            raise ValueError(f"table head might be changed: {target}, {table_headers}")
+            raise ValueError(f"Table header might be changed: {target}, {table_headers}")
         ci_list.append(table_headers.index(target))
 
     data_list = list()
@@ -39,6 +41,7 @@ def main(configs):
         td_list = np.array(tr.find_all("td"))
         data_list.append([s.text.rstrip("\n").strip() for s in td_list[ci_list]])
 
+    print (f"Insert data to db: {len(table_rows)}")
     sql = """
     INSERT INTO snp500_companies(pit_date, symbol, security, gics_sector, gics_sub_industry, cik)
     VALUES (now(), %s, %s, %s, %s, %s)
