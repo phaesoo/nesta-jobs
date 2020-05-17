@@ -28,7 +28,12 @@ def main(configs):
     """
 
     for ticker in tickers["symbol"].tolist():
-        df = get_ohlcv(ticker)
+        try:
+            df = get_ohlcv(ticker)
+        except Exception as e:
+            print ("pandas datareader error", ticker, str(e))
+            continue
+            
         df["date"] = df.index.map(lambda x: int(x.strftime('%Y%m%d')))
         df["ticker"] = ticker
         
