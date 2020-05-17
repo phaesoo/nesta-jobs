@@ -17,6 +17,7 @@ def main(configs):
     assert isinstance(configs, dict)
 
     client = MySQLClient()
+    client.init(**configs["mysql"])
     tickers = client.read_sql("select symbol from snp500_companies where pit_date = (select max(pit_date) from snp500_companies)")
     
     columns = ["ticker", "date", "open", "high", "low", "close", "volume", "adj_close", "return"]
