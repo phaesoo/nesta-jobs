@@ -1,6 +1,3 @@
-USE `nesta_jobs`;
-
-DROP TABLE IF EXISTS `snp500_companies`;
 CREATE TABLE `snp500_companies` (
     `pit_date` DATE,
     `symbol` VARCHAR(5),
