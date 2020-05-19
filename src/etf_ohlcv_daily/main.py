@@ -28,7 +28,7 @@ def main(configs):
     values(%s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
 
-    for ticker in tickers["symbol"].tolist():
+    for ticker in tickers:
         try:
             df = get_ohlcv(ticker)
         except Exception as e:
