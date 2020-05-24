@@ -19,7 +19,7 @@ def main(configs):
     client = MySQLClient()
     client.init(**configs["mysql"])
 
-    tickers = ["SPY", "VOO", "VXX"]
+    tickers = ["SPY", "VOO", "QQQ", "VXX"]
     
     columns = ["ticker", "date", "open", "high", "low", "close", "volume", "adj_close", "return"]
 
