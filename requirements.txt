@@ -8,7 +8,7 @@ lazy-object-proxy==1.4.3
 lxml==4.5.0
 mccabe==0.6.1
 mysqlclient==1.4.6
-numpy==1.18.2
+numpy==1.22.0
 pandas==1.0.3
 pandas-datareader==0.8.1
 pylint==2.5.2
